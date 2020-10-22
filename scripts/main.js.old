@@ -1,0 +1,54 @@
+// Global constant defining array of possible selections
+const ARR_RPS = ["rock", "paper", "scissors"];
+
+// This function returns randomly a string "Rock", "Paper" or "Scissors"
+function computerPlay() {
+	const random = Math.floor(Math.random() * ARR_RPS.length); // Generate random number between 0 and 2
+	return ARR_RPS[random];
+}
+
+// This function return a string that declares the winner of the round from the inputs playerSelection and computerSelection
+function playRound(playerSelection, computerSelection) {
+	// Convert inputs strings to lower case for string comparisons (computer play is already lower case)
+	let playerLC = playerSelection.toLowerCase();
+	let computerLC = computerSelection;
+
+	// Convert inputs to capitalize case for output display purpose
+	let playerCap = playerLC[0].toUpperCase() + playerLC.slice(1);
+	let computerCap = computerLC[0].toUpperCase() + computerLC.slice(1);
+
+	switch (true) {
+		case (playerLC === computerLC):
+			return `Draw! You both chose ${playerCap}.`;
+		case (((playerLC === "rock") && (computerLC === "scissors")) ||
+			((playerLC === "paper") && (computerLC === "rock")) ||
+			((playerLC === "scissors") && (computerLC === "paper"))):
+			return `You Win! ${playerCap} beats ${computerCap}.`;
+		default:
+			return `You Lose! ${computerCap} beats ${playerCap}.`;
+	}
+}
+
+// This function checks if player input is not null and valid (rock paper, scissors) - return true or false
+function checkPlayerInput(playerSelection) {
+	if (playerSelection) {
+		return (ARR_RPS.includes(playerSelection.toLowerCase()))
+	}
+}
+
+// This function generates a 5 rounds game of Rock Paper Scissors, logs the result in the console
+function game() {
+	for (let i = 1; i <= 5; i++) {
+		let computer = computerPlay();
+		let player;
+
+		do {
+			player = window.prompt(`Round ${i} - Type your choice [Rock, Paper, Scissors]:`);
+		} while (!checkPlayerInput(player))
+
+		console.log(playRound(player, computer));
+	}
+}
+
+// Start the game!
+game();
