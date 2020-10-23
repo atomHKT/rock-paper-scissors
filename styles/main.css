@@ -30,14 +30,14 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	transition: opacity 2s ease;
+	transition: opacity 1s ease-in-out;
 }
 
 .btn {
 	margin: 2rem 1rem;
 	transition-property: transform, color;
 	transition-duration: 0.3s;
-	transition-timing-function: ease;
+	transition-timing-function: ease-in-out;
 	cursor: pointer;
 }
 
@@ -54,7 +54,7 @@ body {
 	justify-content: space-around;
 	align-items: center;
 	cursor: pointer;
-	transition: opacity 2s ease;
+	transition: opacity 1s ease-in-out;
 }
 
 #game-result {
@@ -65,7 +65,7 @@ body {
 	justify-content: space-around;
 	align-items: center;
 	cursor: pointer;
-	transition: opacity 2s ease;
+	transition: opacity 1s ease-in-out;
 }
 
 .visible {
